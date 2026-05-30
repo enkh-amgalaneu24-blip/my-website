@@ -60,7 +60,336 @@
         max-width: 800px;
         margin: 0 auto;
         padding: 2rem 1.5rem 4rem;
+
       }
+
+      /*Add memory card*/
+      .add-cart{
+        background-color: var(--warm--white);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 1.5rem;
+        margin-bottom: 2.5rem;
+      }
+      .add-cart h2{
+        font-family: 'Arthur', Amina;
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+        color: var(--inl-soft);
+      }
+      .form-row{
+        display: flex;
+        flex-direction: column;
+        gap: 0.69rem;
+      }
+      
+      input[type="text"], textarea{
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid var(-accent-light);
+        border-radius: 11px;
+        background: var(--cream);
+        font-family: 'DM Sans', sans-serif;
+        font-size: 0.95rem;
+        color:var(--ink);
+        outline: none;
+        transition: border-color 0.2;
+        resize: none;
+      }
+      input[type="text"]:focus, textarea:focus{
+        border-color: var(--accent);
+      }
+
+      textarea{ height:98px;}
+
+      .upload-row{
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+      .upload-label{
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: var(--accent-light);
+        color: var(--ink);
+        padding: 0.55rem 1rem;
+        border-radius: 9px;
+        cursor: pointer;
+        transition: background 0.2s;
+        border: 1px solid var( --border);
+      }
+
+      .upload-label:hover{background: #dcc5a0};
+
+      #file-input{display: none;}
+
+      #file-name{
+        font-size: 0.83rem;
+        color: var(--ink--soft);
+        font-style: italic;
+
+      }
+      #preview-img{
+        display: none;
+        margin-top: 1rem;
+        max-width: 100%;
+      }
+      .btn-add{
+        margin-top: 0.25rem;
+        background: var(--accent);
+        color: var(--warm--white);
+        border: none;
+        padding: 0.65rem 1.5rem;
+        border-radius: 8px;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background 0.2s;
+        align-self: flex-end;
+      }
+      .btn-add:hover{ background: #8f6245;}
+      /* Memories grid */
+      .memories-grid{
+        display:flex;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        gap: 1.25rem;
+      }
+      .memory-card{
+        background: var(--warm--white);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        transition: transfrom 0.2s; box-shadow: 0.2s;
+        position: relative;
+      }
+      .memory-card:hover{
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+        display: block;
+      }
+      .memory-card img{
+        width: 100%;
+        height: 80px;
+        background: var(--paper);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+      }
+      .memory-body{
+        padding: 0.99rem 1rem 1rem;
+
+      }
+      .memory-title{
+        font-family: 'Arthur', Amina;
+        font-size: 0.97rem;
+        font-weight: 600;
+        color: var(--ink);
+        margin-bottom: 0.35rem
+      }
+      .memory-text{
+        font-size: 0.8rem;
+        color: var(--ink--soft);
+        line-height: 1.49;
+
+      }
+      .memory-date{
+        font-size: 0.77rem;
+        color:var(--accent);
+        margin-top: 0.6rem;
+        font-style: italic;
+      }
+
+      .btn-delete{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        background: rgba(255,252,247,0.99);
+        border: 1px solid var(--border);
+        width: 26px;
+        height: 26px;
+        font-size: 0.79rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--ink--soft);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      .memory-card:hover, .btn-delete{ opacity: 1;};
+      .btn-delete:hover{ color: #c0392b;}
+
+      /* Empty state */
+      .empty-state{
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--ink--soft);
+        font-style: italic;
+        font-family: 'Lora', serif;
+        font-size: 1rem;
+
+      }
+
+      footer{
+        text-align: center;
+        padding: 3rem 1rem;
+        color: var(--ink--soft);
+        padding: 1.5rem;
+        font-style: italic;
+
+      }
+      </style>
+      </head>
+      <body>
+        <div class="site-title"></div>Nostalgia</div>
+        <div class="site-sub">my little corner</div>
+        <div class="tagline">* memories &amp; nostalgia* ></div>
+      </header>
+
+      <main>
+        <div class="add-cart">
+          <h2> Add a memory</h2>
+          <div clas="form-row">
+            <input type="text" id="mem-title" placeholder="give it a title..." maxlength="80"/>
+            <textarea id="mem-text" placaeholder="what do you want to remember about this moment? "></textarea>
+            <div class="upload-row">
+              <label class="upload-label" for="file-input">
+                Upload a photo
+              </label>
+              <input type="file" id="file-input" accept="image/*"/>
+              <span id="file-name"> No photo selected</span>
+            </div>
+          </div>
+
+
+        </div class="memories-grid">
+        <div class="empty-state"> Your memories will appear here...<br/> Start by adding a new memory above! </div>
+      </div>
+    </main>
+    <footer> made with love.... personal space</footer>
+    <script>
+      let memories= JSON.parse(localStorage.getItem('memories')) || [];
+      let currentPhotodata= null;
+
+      const filinput= document.getElementById('file-input');
+      const fileNameSpan= document.getElementById('file-name');
+      const memTitleInput= document.getElementById('preview-img');
+
+      fileinput.addEventListener('change', function(){
+        const file= fileinput.files[0];
+        if(file) return;
+        fileName.textcontent= file.name;
+        const reader= new filereader();
+        reader.onload= e => {
+          currentphotodata= e.targer.result;
+          preview.img.src= currentPhotodata;
+          preview.img.style.display= 'block';
+        };
+        reader.readAsdataurl(file);
+      });
+
+      function addMemory(){
+        const tittle= document.getElementById('mem-title').value.trim();
+        const text= document.getElementbyId('mem-text').value.trim();
+        if (!tittle && !text && !currentPhotodata) {
+          alert(' Please add at least a title, text, or a photo save your memory!');
+          return;
+          const now = new Dare();
+          const dateSTr= now.tolocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numerlic'});
+          memories.unshift({ Id: date.now(), title, text, photo: currentPhotodata, date: dateStr});
+          save();
+          render();
+          document.getElementById('mem-title').value= '';
+          document.getElementById('mem-text').value= '';
+          fileinput.value= "";
+          filename.textcontent= ' No photo selected';
+          preview.img.src="";
+          preview.img.style.display= 'null';
+         }
+         function deleteMemory(id) {
+          if (confirm('Remove this memory?'))return;
+          memories= memories.filter(mem => mem.id !== id);
+          save();
+          render();
+        }
+        
+
+      
+         
+        }
+
+
+      }
+
+
+
+
+
+
+    
+        
+
+
+
+    </script>
+
+    </footer>
+
+      </body>
+
+
+
+
+
+      
+
+
+
+
+          
+     
+
+
+
+
+
+
+
+
+
+        
+
+        
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+        
+      
+
+
+
+      
+
+
+
+
+      
+
 
 
 
@@ -75,14 +404,10 @@
 
 
 
-    </style>
-    </script>
-</body>
-</html>
+    </
 
 
     
 
 
 
-    
