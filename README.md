@@ -1,4 +1,4 @@
-# hello, this is my first website
+# NOSTALGUA
 this will include all of my lives and happy moments.
 
 ## Preview
