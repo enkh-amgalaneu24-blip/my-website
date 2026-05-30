@@ -245,8 +245,10 @@
       </head>
       <body>
         <div class="site-title"></div>Nostalgia</div>
-        <div class="site-sub">my little corner</div>
-        <div class="tagline">* memories &amp; nostalgia* ></div>
+        <div class="site-sub">LET'S GO TO THE GARDEN, LET'S BE KIDS AGAIN
+          I'LL CHASE YOU IF YOU CHASE ME...
+        </div>
+        <div class="tagline">⭐memories &amp; nostalgia⭐></div>
       </header>
 
       <main>
@@ -315,99 +317,32 @@
           save();
           render();
         }
-        
-
-      
-         
+        function save() {
+          localStorage.setItem('memories', JSON.stringlyfy(memories));    
         }
-
-
-      }
-
-
-
-
-
-
-    
-        
-
-
-
-    </script>
-
-    </footer>
-
-      </body>
-
-
-
-
-
-      
-
-
-
-
-          
-     
-
-
-
-
-
-
-
-
-
-        
-
-        
-
-
-
-
-
-
-
-
-        
-
-
-
-
-
-
-        
-      
-
-
-
-      
-
-
-
-
-      
-
-
-
-
-
-
-
-
-      
-
-
-
-
-
-
-    </
-
-
-    
-
-
-
+        function render() {
+          const grid= document.getElementById('memories-grid');
+          const label= document.getElementById('count-label');
+          label.textcontent= memories.length + (memories.length === 1 ? ' memory' : ' memories');
+         }
+         if (memories.length === 0) {
+          grid. innerHTML = memoties.map(mem => `
+          <div class="memory-card">
+            ${mem.photo ? `<img src="${mem.photo}" alt="${mem.title|| 'Memory'}"/>` : '<div class="memory-no-photo">📸</div'}
+              <button class="btn-delete" oneclick="deleteMemory(${mem.id})"title="remove">x</button>
+              <div class="memory-body">
+                ${mem.title ? `<div class="memory-titlr">${mem.title}>$escape(mem.title)}</div` : ''}
+                  ${mem.text? `<div class="memory-text">$escape(mem.text)}</div>` : ''}
+                  <div class="memory-date">${mem.date}<div/>
+                    </div>
+                    </div>
+                    `).join('');   
+
+                  }
+         function escape(str) {
+          return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+         }
+          render();
+          </script>
+          </body>
+          </html>
