@@ -4,6 +4,6 @@ Hello guys, this is my idea of Nostalgia never dies. by summarizing you can uplo
 
 ## Preview
 
-![Website Preview](file:///Users/enkh-amgalan/my-website/index.html)
+![Website Preview]()
 
 
