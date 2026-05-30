@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title> Nostalgia moments </title>
-    <link href= "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&
-    family=DM+Sans:wght@300;400;500&display=swap"  rel="stylesheet"/>
+    <link href= "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"  rel="stylesheet"/>
     <style>
       *, *::before, *::after {box-sizing: border-box; margin: 0; padding: 0; }
 
-      :root{
+      :root {
         --cream: #faf7f2;
         --paper : #f3edef;
         --ink: #2c2416;
@@ -17,15 +16,15 @@
         --accent: #b07f4a;
         --warm--white: #fffcf7;
         --border: rgba(100,70,30, 0.15);
-  
       }
+
       body{
         background-color: var(--cream);
         color: var(--ink);
         font-family: 'DM Sans', sans-serif;
-        min-height: 130vh;
-
+        min-height: 100vh;
       }
+
       header{
         background: var(--warm--white);
         border-bottom: 1px solid var(--border);
@@ -33,15 +32,15 @@
         text-align: center;
         
       }
-      .site-title{
-        font-family: 'Arthur', Amina;
+      .site-title {
+        font-family: 'Lora', serif;
         font-size: 2.4rem;
         font-weight:600;
         color: var(--ink);
         letter-spacing: -0.5px
       }
       .site-sub {
-        font-family: 'Arthur' Amina;
+        font-family: 'Lora' serif;
         font-style: italic;
         color: var(--ink--soft);
         font-size: 1rem;
@@ -56,26 +55,25 @@
         font-weight: 500;
   
       }
-      main{
+       main{
         max-width: 800px;
         margin: 0 auto;
         padding: 2rem 1.5rem 4rem;
-
       }
-
+        
       /*Add memory card*/
-      .add-cart{
+      .add-card{
         background-color: var(--warm--white);
         border: 1px solid var(--border);
         border-radius: 16px;
         padding: 1.5rem;
         margin-bottom: 2.5rem;
       }
-      .add-cart h2{
-        font-family: 'Arthur', Amina;
+      .add-card h2 {
+        font-family: 'Lora', serif;
         font-size: 1.1rem;
         margin-bottom: 1rem;
-        color: var(--inl-soft);
+        color: var(--ink--soft);
       }
       .form-row{
         display: flex;
@@ -83,10 +81,10 @@
         gap: 0.69rem;
       }
       
-      input[type="text"], textarea{
+      input[type= "text"], textarea {
         width: 100%;
-        padding: 0.75rem;
-        border: 1px solid var(-accent-light);
+        padding: 0.75rem 1rem;
+        border: 1px solid var(--accent-light);
         border-radius: 11px;
         background: var(--cream);
         font-family: 'DM Sans', sans-serif;
@@ -96,33 +94,35 @@
         transition: border-color 0.2;
         resize: none;
       }
-      input[type="text"]:focus, textarea:focus{
+      input[type="text"]:focus, textarea:focus {
         border-color: var(--accent);
       }
 
-      textarea{ height:98px;}
+      textarea{ height: 93px;}
 
       .upload-row{
         display: flex;
         align-items: center;
-        gap: 1rem;
+        gap: 0.75rem;
       }
       .upload-label{
         display: inline-flex;
         align-items: center;
-        gap: 0.5rem;
+        gap: 0.4rem;
         background: var(--accent-light);
         color: var(--ink);
         padding: 0.55rem 1rem;
         border-radius: 9px;
+        font-size: 0.85rem;
+        font-weight: 500;
         cursor: pointer;
         transition: background 0.2s;
-        border: 1px solid var( --border);
+        border: 1px solid var(--border);
       }
 
-      .upload-label:hover{background: #dcc5a0};
+      .upload-label:hover {background: #dcc5a0};
 
-      #file-input{display: none;}
+      #file-input{display:  none; }
 
       #file-name{
         font-size: 0.83rem;
@@ -132,8 +132,11 @@
       }
       #preview-img{
         display: none;
-        margin-top: 1rem;
         max-width: 100%;
+        max-height: 200px;
+        border-radius: 10px;
+        object-fit: cover;
+        border: 1px solid var(--border);
       }
       .btn-add{
         margin-top: 0.25rem;
@@ -142,6 +145,7 @@
         border: none;
         padding: 0.65rem 1.5rem;
         border-radius: 8px;
+        font-family: 'DM Sans', sans-serif;
         font-size: 0.95rem;
         font-weight: 500;
         cursor: pointer;
@@ -149,9 +153,26 @@
         align-self: flex-end;
       }
       .btn-add:hover{ background: #8f6245;}
+
       /* Memories grid */
-      .memories-grid{
+      .memories-header {
         display:flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 1.25rem;
+      }
+      .memories-header h2{
+        font-family: 'Lora', serif;
+        font-size: 1.25rem;
+        color: var(--ink); 
+      }
+      .count-badge {
+        font-size: 0.8rem;
+        color: var(--ink--soft);
+      }
+
+       .memories-grid{
+        display:grid;
         grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
         gap: 1.25rem;
       }
@@ -160,37 +181,44 @@
         border: 1px solid var(--border);
         border-radius: 14px;
         overflow: hidden;
-        transition: transfrom 0.2s; box-shadow: 0.2s;
+        transition: transform 0.2s, box-shadow 0.2s;
         position: relative;
       }
       .memory-card:hover{
+        transform: translateY(-3px);
+        box-shadow: 0 6px 24px rgba(100,70,30,0.1);
+
+      }
+      .memory-card img {
         width: 100%;
         height: 180px;
         object-fit: cover;
         display: block;
       }
-      .memory-card img{
-        width: 100%;
-        height: 80px;
-        background: var(--paper);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.8rem;
-      }
+
+        .memory-no-img{
+          width: 100%;
+          height: 80px;
+          background: var(--paper);
+          display:flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.8rem;
+        } 
+      
       .memory-body{
         padding: 0.99rem 1rem 1rem;
 
       }
       .memory-title{
-        font-family: 'Arthur', Amina;
+        font-family: 'Lora', serif;
         font-size: 0.97rem;
         font-weight: 600;
         color: var(--ink);
         margin-bottom: 0.35rem
       }
       .memory-text{
-        font-size: 0.8rem;
+        font-size: 0.88rem;
         color: var(--ink--soft);
         line-height: 1.49;
 
@@ -208,6 +236,7 @@
         right: 8px;
         background: rgba(255,252,247,0.99);
         border: 1px solid var(--border);
+        border-radius: 6px;
         width: 26px;
         height: 26px;
         font-size: 0.79rem;
@@ -219,8 +248,8 @@
         opacity: 0;
         transition: opacity 0.2s;
       }
-      .memory-card:hover, .btn-delete{ opacity: 1;};
-      .btn-delete:hover{ color: #c0392b;}
+      .memory-card:hover .btn-delete{ opacity: 1; }
+      .btn-delete:hover { color: #c0392b;}
 
       /* Empty state */
       .empty-state{
@@ -235,7 +264,7 @@
 
       footer{
         text-align: center;
-        padding: 3rem 1rem;
+        font-size: 0.75rem;
         color: var(--ink--soft);
         padding: 1.5rem;
         font-style: italic;
@@ -244,6 +273,8 @@
       </style>
       </head>
       <body>
+
+        <header>
         <div class="site-title"></div>Nostalgia</div>
         <div class="site-sub">LET'S GO TO THE GARDEN, LET'S BE KIDS AGAIN
           I'LL CHASE YOU IF YOU CHASE ME...
@@ -252,25 +283,34 @@
       </header>
 
       <main>
-        <div class="add-cart">
+        <div class="add-card">
           <h2> Add a memory</h2>
-          <div clas="form-row">
+          <div class="form-row">
             <input type="text" id="mem-title" placeholder="give it a title..." maxlength="80"/>
-            <textarea id="mem-text" placaeholder="what do you want to remember about this moment? "></textarea>
-            <div class="upload-row">
-              <label class="upload-label" for="file-input">
-                Upload a photo
+            <textarea id="mem-text" placeholder="what do you want to remember about this moment?"></textarea>
+
+            <div class= "upload-row">
+              <label class="upload-label" for="file-input" >
+                📸Upload a photo
               </label>
               <input type="file" id="file-input" accept="image/*"/>
               <span id="file-name"> No photo selected</span>
             </div>
+            <img id="preview-img" alt="preview"/>
+            <button class="btn-add" oneclick="addMemory()"> Add memory</button>
           </div>
+        </div>
 
+        <div class="memories-header">
+          <h2> Your memories</h2>
+          <span class="count-badge" id="count-label">0 memories</span>
+        </div>
 
-        </div class="memories-grid">
+        </div id="memories-grid">
         <div class="empty-state"> Your memories will appear here...<br/> Start by adding a new memory above! </div>
       </div>
     </main>
+
     <footer> made with love.... personal space</footer>
     <script>
       let memories= JSON.parse(localStorage.getItem('memories')) || [];
@@ -278,42 +318,45 @@
 
       const filinput= document.getElementById('file-input');
       const fileNameSpan= document.getElementById('file-name');
-      const memTitleInput= document.getElementById('preview-img');
+      const previewIMG= document.getElementById('preview-img');
 
-      fileinput.addEventListener('change', function(){
+      fileinput.addEventListener('change', () => {
         const file= fileinput.files[0];
-        if(file) return;
-        fileName.textcontent= file.name;
-        const reader= new filereader();
+        if(!file) return;
+        fileNameSpan.textContent= file.name;
+        const reader= new FileReader();
         reader.onload= e => {
-          currentphotodata= e.targer.result;
-          preview.img.src= currentPhotodata;
-          preview.img.style.display= 'block';
+          currentPhotodata= e.target.result;
+          previewIMG.src= currentPhotodata;
+          previewIMG.style.display= 'block';
         };
-        reader.readAsdataurl(file);
-      });
+      reader.readAsDataURL(file);
+       });
 
       function addMemory(){
-        const tittle= document.getElementById('mem-title').value.trim();
-        const text= document.getElementbyId('mem-text').value.trim();
-        if (!tittle && !text && !currentPhotodata) {
-          alert(' Please add at least a title, text, or a photo save your memory!');
+        const title= document.getElementById('mem-title').value.trim();
+        const text= document.getElementById('mem-text').value.trim();
+        if (!title && !text && !currentPhotodata) {
+          alert(' Please add at least a title, text, or a photo!');
           return;
-          const now = new Dare();
-          const dateSTr= now.tolocaleDateString('en-US', {year: 'numeric', month: 'long', day: 'numerlic'});
-          memories.unshift({ Id: date.now(), title, text, photo: currentPhotodata, date: dateStr});
+        }
+          const now = new Date();
+          const DateSTr= now.tolocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric'});
+          memories.unshift({ Id: Date.now(), title, text, photo: currentPhotodata, date: dateSTr});
           save();
           render();
           document.getElementById('mem-title').value= '';
           document.getElementById('mem-text').value= '';
-          fileinput.value= "";
-          filename.textcontent= ' No photo selected';
-          preview.img.src="";
-          preview.img.style.display= 'null';
+          fileInput.value = '';
+          Filename.textContent= ' No photo selected';
+          previewIMG.style.display = '';
+          previewIMGsrc= '';
+          currentPhotodata= null;
+
          }
          function deleteMemory(id) {
-          if (confirm('Remove this memory?'))return;
-          memories= memories.filter(mem => mem.id !== id);
+          if (!confirm('Remove this memory?'))return;
+          memories = memories.filter(mem => mem.id !== id);
           save();
           render();
         }
@@ -326,23 +369,43 @@
           label.textcontent= memories.length + (memories.length === 1 ? ' memory' : ' memories');
          }
          if (memories.length === 0) {
-          grid. innerHTML = memoties.map(mem => `
+          grid. innerHTML = memories.map(mem => `
           <div class="memory-card">
-            ${mem.photo ? `<img src="${mem.photo}" alt="${mem.title|| 'Memory'}"/>` : '<div class="memory-no-photo">📸</div'}
-              <button class="btn-delete" oneclick="deleteMemory(${mem.id})"title="remove">x</button>
+            ${mem.photo ? `<img src="${mem.photo}" alt="${mem.title || 'Memory'}"/>` : `<div class="memory-no-photo">📸</div`}
+              <button class="btn-delete" oneclick="deleteMemory(${mem.id})"title="Remove">x</button>
               <div class="memory-body">
-                ${mem.title ? `<div class="memory-titlr">${mem.title}>$escape(mem.title)}</div` : ''}
-                  ${mem.text? `<div class="memory-text">$escape(mem.text)}</div>` : ''}
-                  <div class="memory-date">${mem.date}<div/>
+                ${mem.title ? `<div class="memory-titlr">${mem.title}>$esc(mem.title)}</div` : ''}
+                  ${mem.text? `<div class="memory-text">$esc(mem.text)}</div>` : ''}
+                  <div class="memory-date">${mem.date}</div>
                     </div>
                     </div>
                     `).join('');   
 
                   }
-         function escape(str) {
+         function esc(str) {
           return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
          }
           render();
           </script>
           </body>
           </html>
+
+              
+              
+
+
+
+
+        
+
+
+
+
+
+
+      
+
+
+
+
+        
