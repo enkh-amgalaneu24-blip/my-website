@@ -1,411 +1,470 @@
 <!DOCTYPE html>
-<html lang="en"> 
-  <head> 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title> Nostalgia moments </title>
-    <link href= "https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"  rel="stylesheet"/>
-    <style>
-      *, *::before, *::after {box-sizing: border-box; margin: 0; padding: 0; }
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Let's go to past will'ya heheh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      :root {
-        --cream: #faf7f2;
-        --paper : #f3edef;
-        --ink: #2c2416;
-        --ink--soft: #6b5d4f;
-        --accent: #b07f4a;
-        --warm--white: #fffcf7;
-        --border: rgba(100,70,30, 0.15);
-      }
+    :root {
+      --bg: hsl(40, 37%, 92%);
+      --card-bg: hsl(40, 26%, 93%);
+      --text: hsl(39, 36%, 11%);
+      --soft: hsl(29, 15%, 31%);
+      --accent: hsl(39, 36%, 11%);
+      --light-accent: hsl(40, 26%, 93%);
+      --border: rgba(100, 70, 30, 0.15);
+    }
 
-      body{
-        background-color: var(--cream);
-        color: var(--ink);
-        font-family: 'DM Sans', sans-serif;
-        min-height: 100vh;
-      }
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      min-height: 100vh;
+      line-height: 1.6;
+    }
 
-      header{
-        background: var(--warm--white);
-        border-bottom: 1px solid var(--border);
-        padding:  2.5rem 2rem 2rem;
-        text-align: center;
-        
-      }
-      .site-title {
-        font-family: 'Lora', serif;
-        font-size: 2.4rem;
-        font-weight:600;
-        color: var(--ink);
-        letter-spacing: -0.5px
-      }
-      .site-sub {
-        font-family: 'Lora' serif;
-        font-style: italic;
-        color: var(--ink--soft);
-        font-size: 1rem;
-        margin-top: 0.3rem;
-      }
-      .tagline{
-        margin-top: 0.8rem;
-        font-size: 0.85rem;
-        color: var(--accent);
-        letter-spacing: 0.09em;
-        text-transform: uppercase;
-        font-weight: 500;
-  
-      }
-       main{
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem 1.5rem 4rem;
-      }
-        
-      /*Add memory card*/
-      .add-card{
-        background-color: var(--warm--white);
-        border: 1px solid var(--border);
-        border-radius: 16px;
-        padding: 1.5rem;
-        margin-bottom: 2.5rem;
-      }
-      .add-card h2 {
-        font-family: 'Lora', serif;
-        font-size: 1.1rem;
-        margin-bottom: 1rem;
-        color: var(--ink--soft);
-      }
-      .form-row{
-        display: flex;
-        flex-direction: column;
-        gap: 0.69rem;
-      }
-      
-      input[type= "text"], textarea {
-        width: 100%;
-        padding: 0.75rem 1rem;
-        border: 1px solid var(--accent-light);
-        border-radius: 11px;
-        background: var(--cream);
-        font-family: 'DM Sans', sans-serif;
-        font-size: 0.95rem;
-        color:var(--ink);
-        outline: none;
-        transition: border-color 0.2;
-        resize: none;
-      }
-      input[type="text"]:focus, textarea:focus {
-        border-color: var(--accent);
-      }
+    /* ---------- header ---------- */
+    header {
+      background: var(--card-bg);
+      border-bottom: 1px solid var(--border);
+      padding: 2.8rem 1.5rem 2rem;
+      text-align: center;
+    }
 
-      textarea{ height: 93px;}
+    .site-title {
+      font-family: 'Lora', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+    }
 
-      .upload-row{
-        display: flex;
-        align-items: center;
-        gap: 0.75rem;
-      }
-      .upload-label{
-        display: inline-flex;
-        align-items: center;
-        gap: 0.4rem;
-        background: var(--accent-light);
-        color: var(--ink);
-        padding: 0.55rem 1rem;
-        border-radius: 9px;
-        font-size: 0.85rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background 0.2s;
-        border: 1px solid var(--border);
-      }
+    .site-sub {
+      font-family: 'Lora', serif;
+      font-style: italic;
+      color: var(--soft);
+      font-size: 0.95rem;
+      margin-top: 0.2rem;
+    }
 
-      .upload-label:hover {background: #dcc5a0};
+    .tagline {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
 
-      #file-input{display:  none; }
+    /* ---------- main area ---------- */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 2.5rem 1.2rem 4rem;
+    }
 
-      #file-name{
-        font-size: 0.83rem;
-        color: var(--ink--soft);
-        font-style: italic;
+    /* add card */
+    .add-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 1.4rem 1.5rem 1.6rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+    }
 
-      }
-      #preview-img{
-        display: none;
-        max-width: 100%;
-        max-height: 200px;
-        border-radius: 10px;
-        object-fit: cover;
-        border: 1px solid var(--border);
-      }
-      .btn-add{
-        margin-top: 0.25rem;
-        background: var(--accent);
-        color: var(--warm--white);
-        border: none;
-        padding: 0.65rem 1.5rem;
-        border-radius: 8px;
-        font-family: 'DM Sans', sans-serif;
-        font-size: 0.95rem;
-        font-weight: 500;
-        cursor: pointer;
-        transition: background 0.2s;
-        align-self: flex-end;
-      }
-      .btn-add:hover{ background: #8f6245;}
+    .add-card h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.05rem;
+      margin-bottom: 0.9rem;
+      color: var(--soft);
+      font-weight: 400;
+    }
 
-      /* Memories grid */
-      .memories-header {
-        display:flex;
-        align-items: baseline;
-        justify-content: space-between;
-        margin-bottom: 1.25rem;
-      }
-      .memories-header h2{
-        font-family: 'Lora', serif;
-        font-size: 1.25rem;
-        color: var(--ink); 
-      }
-      .count-badge {
-        font-size: 0.8rem;
-        color: var(--ink--soft);
-      }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+    }
 
-       .memories-grid{
-        display:grid;
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 1.25rem;
-      }
-      .memory-card{
-        background: var(--warm--white);
-        border: 1px solid var(--border);
-        border-radius: 14px;
-        overflow: hidden;
-        transition: transform 0.2s, box-shadow 0.2s;
-        position: relative;
-      }
-      .memory-card:hover{
-        transform: translateY(-3px);
-        box-shadow: 0 6px 24px rgba(100,70,30,0.1);
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--light-accent);
+      border-radius: 12px;
+      background: var(--bg);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border 0.2s;
+      resize: none;
+    }
 
-      }
-      .memory-card img {
-        width: 100%;
-        height: 180px;
-        object-fit: cover;
-        display: block;
-      }
+    input[type="text"]:focus, textarea:focus {
+      border-color: var(--accent);
+    }
 
-        .memory-no-img{
-          width: 100%;
-          height: 80px;
-          background: var(--paper);
-          display:flex;
-          align-items: center;
-          justify-content: center;
-          font-size: 1.8rem;
-        } 
-      
-      .memory-body{
-        padding: 0.99rem 1rem 1rem;
+    textarea { height: 85px; }
 
-      }
-      .memory-title{
-        font-family: 'Lora', serif;
-        font-size: 0.97rem;
-        font-weight: 600;
-        color: var(--ink);
-        margin-bottom: 0.35rem
-      }
-      .memory-text{
-        font-size: 0.88rem;
-        color: var(--ink--soft);
-        line-height: 1.49;
+    .upload-row {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      flex-wrap: wrap;
+    }
 
-      }
-      .memory-date{
-        font-size: 0.77rem;
-        color:var(--accent);
-        margin-top: 0.6rem;
-        font-style: italic;
-      }
+    .upload-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--light-accent);
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      border: 1px solid var(--border);
+    }
 
-      .btn-delete{
-        position: absolute;
-        top: 8px;
-        right: 8px;
-        background: rgba(255,252,247,0.99);
-        border: 1px solid var(--border);
-        border-radius: 6px;
-        width: 26px;
-        height: 26px;
-        font-size: 0.79rem;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--ink--soft);
-        opacity: 0;
-        transition: opacity 0.2s;
-      }
-      .memory-card:hover .btn-delete{ opacity: 1; }
-      .btn-delete:hover { color: #c0392b;}
+    .upload-label:hover { background: hsl(37, 50%, 74%); }
 
-      /* Empty state */
-      .empty-state{
-        text-align: center;
-        padding: 3rem 1rem;
-        color: var(--ink--soft);
-        font-style: italic;
-        font-family: 'Lora', serif;
-        font-size: 1rem;
+    #file-input { display: none; }
 
-      }
+    #file-name {
+      font-size: 0.8rem;
+      color: var(--soft);
+      font-style: italic;
+    }
 
-      footer{
-        text-align: center;
-        font-size: 0.75rem;
-        color: var(--ink--soft);
-        padding: 1.5rem;
-        font-style: italic;
+    #preview-img {
+      display: none;
+      max-width: 100%;
+      max-height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+    }
 
-      }
-      </style>
-      </head>
-      <body>
+    .btn-add {
+      margin-top: 0.4rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.4rem;
+      border-radius: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.88rem;
+      cursor: pointer;
+      align-self: flex-end;
+      transition: background 0.2s;
+    }
 
-        <header>
-        <div class="site-title"></div>Nostalgia</div>
-        <div class="site-sub">LET'S GO TO THE GARDEN, LET'S BE KIDS AGAIN
-          I'LL CHASE YOU IF YOU CHASE ME...
-        </div>
-        <div class="tagline">⭐memories &amp; nostalgia⭐></div>
-      </header>
+    .btn-add:hover { background: hsl(39, 36%, 11%); }
 
-      <main>
-        <div class="add-card">
-          <h2> Add a memory</h2>
-          <div class="form-row">
-            <input type="text" id="mem-title" placeholder="give it a title..." maxlength="80"/>
-            <textarea id="mem-text" placeholder="what do you want to remember about this moment?"></textarea>
+    /* memories header */
+    .memories-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1.2rem;
+    }
 
-            <div class= "upload-row">
-              <label class="upload-label" for="file-input" >
-                📸Upload a photo
-              </label>
-              <input type="file" id="file-input" accept="image/*"/>
-              <span id="file-name"> No photo selected</span>
-            </div>
-            <img id="preview-img" alt="preview"/>
-            <button class="btn-add" oneclick="addMemory()"> Add memory</button>
-          </div>
-        </div>
+    .memories-header h2 {
+      font-family: 'Lora', serif;
+      font-size: 1.2rem;
+    }
 
-        <div class="memories-header">
-          <h2> Your memories</h2>
-          <span class="count-badge" id="count-label">0 memories</span>
-        </div>
+    .count-badge {
+      font-size: 0.78rem;
+      color: var(--soft);
+    }
 
-        </div id="memories-grid">
-        <div class="empty-state"> Your memories will appear here...<br/> Start by adding a new memory above! </div>
+    /* ---------- grid ---------- */
+    #memories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+      gap: 1.5rem 1.1rem;
+    }
+
+    .memory-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: transform 0.15s ease, box-shadow 0.2s;
+      position: relative;
+    }
+
+    .memory-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 20px rgba(100,70,30,0.08);
+    }
+
+    .memory-card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .memory-no-img {
+      width: 100%;
+      height: 70px;
+      background: hsl(40, 26%, 93%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+    }
+
+    .memory-body {
+      padding: 0.8rem 0.9rem 1rem;
+    }
+
+    .memory-title {
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .memory-text {
+      font-size: 0.8rem;
+      color: var(--soft);
+      line-height: 1.5;
+    }
+
+    .memory-date {
+      font-size: 0.7rem;
+      color: var(--accent);
+      margin-top: 0.6rem;
+      font-style: italic;
+    }
+
+    /* delete button */
+    .btn-delete {
+      position: absolute;
+      top: 7px;
+      right: 7px;
+      background: rgba(255,252,247,0.92);
+      border: 1px solid var(--border);
+      border-radius: 50%;
+      width: 24px;
+      height: 24px;
+      font-size: 0.7rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--soft);
+      opacity: 0;
+      transition: opacity 0.2s;
+      padding: 0;
+      line-height: 1;
+    }
+
+    .memory-card:hover .btn-delete { opacity: 1; }
+    .btn-delete:hover { color: hsl(6, 78%, 42%); background: hsl(0, 0%, 100%); }
+
+    /* empty state */
+    .empty-state {
+      text-align: center;
+      padding: 3.5rem 1rem;
+      color: var(--soft);
+      font-style: italic;
+      font-family: 'Lora', serif;
+      font-size: 0.95rem;
+    }
+
+    /* ---------- footer ---------- */
+    footer {
+      text-align: center;
+      font-size: 0.72rem;
+      color: var(--soft);
+      padding: 2rem 1rem 1.5rem;
+      font-style: italic;
+      border-top: 1px solid var(--border);
+      margin-top: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="site-title">Nostalgia</div>
+  <div class="site-sub">COME ON LET'S GO TO PARK </div>
+  <div class="tagline">✦ memories & nostalgia ✦</div>
+</header>
+
+<main>
+  <!-- add memory form -->
+  <div class="add-card">
+    <h2>Add a memory</h2>
+    <div class="form-row">
+      <input type="text" id="mem-title" placeholder="Give it a title…" maxlength="80"/>
+      <textarea id="mem-text" placeholder="What do you want to remember about this moment?"></textarea>
+
+      <div class="upload-row">
+        <label class="upload-label" for="file-input">
+          📷 Upload photo.....
+        </label>
+        <input type="file" id="file-input" accept="image/*"/>
+        <span id="file-name">No photo selected</span>
       </div>
-    </main>
 
-    <footer> made with love.... personal space</footer>
-    <script>
-      let memories= JSON.parse(localStorage.getItem('memories')) || [];
-      let currentPhotodata= null;
+      <img id="preview-img" alt="preview of selected photo"/>
+      <button class="btn-add" id="save-btn">Save memory →</button>
+    </div>
+  </div>
 
-      const filinput= document.getElementById('file-input');
-      const fileNameSpan= document.getElementById('file-name');
-      const previewIMG= document.getElementById('preview-img');
+  <!-- memories list -->
+  <div class="memories-header">
+    <h2>My memories</h2>
+    <span class="count-badge" id="count-label">0 memories</span>
+  </div>
 
-      fileinput.addEventListener('change', () => {
-        const file= fileinput.files[0];
-        if(!file) return;
-        fileNameSpan.textContent= file.name;
-        const reader= new FileReader();
-        reader.onload= e => {
-          currentPhotodata= e.target.result;
-          previewIMG.src= currentPhotodata;
-          previewIMG.style.display= 'block';
-        };
-      reader.readAsDataURL(file);
-       });
+  <div id="memories-grid">
+    <div class="empty-state">Your memories will appear here…<br/>Start by adding one above.</div>
+  </div>
+</main>
 
-      function addMemory(){
-        const title= document.getElementById('mem-title').value.trim();
-        const text= document.getElementById('mem-text').value.trim();
-        if (!title && !text && !currentPhotodata) {
-          alert(' Please add at least a title, text, or a photo!');
-          return;
-        }
-          const now = new Date();
-          const DateSTr= now.tolocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric'});
-          memories.unshift({ Id: Date.now(), title, text, photo: currentPhotodata, date: dateSTr});
-          save();
-          render();
-          document.getElementById('mem-title').value= '';
-          document.getElementById('mem-text').value= '';
-          fileInput.value = '';
-          Filename.textContent= ' No photo selected';
-          previewIMG.style.display = '';
-          previewIMGsrc= '';
-          currentPhotodata= null;
+<footer>made with love · Your personal space absolute privacy</footer>
 
-         }
-         function deleteMemory(id) {
-          if (!confirm('Remove this memory?'))return;
-          memories = memories.filter(mem => mem.id !== id);
-          save();
-          render();
-        }
-        function save() {
-          localStorage.setItem('memories', JSON.stringlyfy(memories));    
-        }
-        function render() {
-          const grid= document.getElementById('memories-grid');
-          const label= document.getElementById('count-label');
-          label.textcontent= memories.length + (memories.length === 1 ? ' memory' : ' memories');
-         }
-         if (memories.length === 0) {
-          grid. innerHTML = memories.map(mem => `
-          <div class="memory-card">
-            ${mem.photo ? `<img src="${mem.photo}" alt="${mem.title || 'Memory'}"/>` : `<div class="memory-no-photo">📸</div`}
-              <button class="btn-delete" oneclick="deleteMemory(${mem.id})"title="Remove">x</button>
-              <div class="memory-body">
-                ${mem.title ? `<div class="memory-titlr">${mem.title}>$esc(mem.title)}</div` : ''}
-                  ${mem.text? `<div class="memory-text">$esc(mem.text)}</div>` : ''}
-                  <div class="memory-date">${mem.date}</div>
-                    </div>
-                    </div>
-                    `).join('');   
+<script>
+  // grab memories from localStorage, or start fresh
+  let memories = JSON.parse(localStorage.getItem('memories') || '[]');
+  let currentPhotoData = null;
 
-                  }
-         function esc(str) {
-          return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-         }
-          render();
-          </script>
-          </body>
-          </html>
+  // DOM refs
+  const titleInput = document.getElementById('mem-title');
+  const textInput = document.getElementById('mem-text');
+  const fileInput = document.getElementById('file-input');
+  const fileNameSpan = document.getElementById('file-name');
+  const previewImg = document.getElementById('preview-img');
+  const saveBtn = document.getElementById('save-btn');
+  const grid = document.getElementById('memories-grid');
+  const countLabel = document.getElementById('count-label');
 
-              
-              
+  // ---- photo upload handling ----
+  fileInput.addEventListener('change', function() {
+    const file = this.files[0];
+    if (!file) return;
 
+    fileNameSpan.textContent = file.name;
 
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      currentPhotoData = e.target.result;
+      previewImg.src = currentPhotoData;
+      previewImg.style.display = 'block';
+    };
+    reader.readAsDataURL(file);
+  });
 
+  // ---- save a memory ----
+  function addMemory() {
+    const title = titleInput.value.trim();
+    const text = textInput.value.trim();
 
-        
+    // nothing to save? nudge the user
+    if (!title && !text && !currentPhotoData) {
+      alert('come on, add at least a title, text, or photo!');
+      return;
+    }
 
+    const now = new Date();
+    const dateStr = now.toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric'
+    });
 
+    // prepend so newest shows first
+    memories.unshift({
+      id: Date.now(),
+      title: title,
+      text: text,
+      photo: currentPhotoData,
+      date: dateStr
+    });
 
+    // persist & re-render
+    localStorage.setItem('memories', JSON.stringify(memories));
+    renderMemories();
 
+    // reset form
+    titleInput.value = '';
+    textInput.value = '';
+    fileInput.value = '';
+    fileNameSpan.textContent = 'No photo selected';
+    previewImg.style.display = 'none';
+    previewImg.src = '';
+    currentPhotoData = null;
+  }
 
+  // ---- delete a memory ----
+  function deleteMemory(id) {
+    if (!confirm('You gonna remove it:((((')) return;
+    memories = memories.filter(function(m) { return m.id !== id; });
+    localStorage.setItem('memories', JSON.stringify(memories));
+    renderMemories();
+  }
 
-      
+  // ---- simple html escaping (no library needed) ----
+  function esc(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  }
 
+  // ---- render all memories ----
+  function renderMemories() {
+    const count = memories.length;
+    countLabel.textContent = count + (count === 1 ? ' memory' : ' memories');
 
+    // empty state
+    if (count === 0) {
+      grid.innerHTML = '<div class="empty-state">Your memories will appear here…<br/>Start by adding one above.</div>';
+      return;
+    }
 
+    // build cards
+    var html = '';
+    for (var i = 0; i < memories.length; i++) {
+      var m = memories[i];
+      html += '<div class="memory-card">';
 
-        
+      // photo or placeholder
+      if (m.photo) {
+        html += '<img src="' + m.photo + '" alt="' + (m.title || 'memory photo') + '" loading="lazy"/>';
+      } else {
+        html += '<div class="memory-no-img">🌿</div>';
+      }
+
+      // delete button (inline onclick, old-school vibe)
+      html += '<button class="btn-delete" onclick="deleteMemory(' + m.id + ')" title="Remove">✕</button>';
+
+      html += '<div class="memory-body">';
+      if (m.title) html += '<div class="memory-title">' + esc(m.title) + '</div>';
+      if (m.text) html += '<div class="memory-text">' + esc(m.text) + '</div>';
+      html += '<div class="memory-date">' + m.date + '</div>';
+      html += '</div>';
+
+      html += '</div>';
+    }
+
+    grid.innerHTML = html;
+  }
+
+  // attach save handler
+  saveBtn.addEventListener('click', addMemory);
+
+  // initial render
+  renderMemories();
+</script>
+</body>
+</html>
