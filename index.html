@@ -26,7 +26,7 @@
       line-height: 1.6;
     }
 
-    /* ---------- header ---------- */
+    /* ----- header ------*/
     header {
       background: var(--card-bg);
       border-bottom: 1px solid var(--border);
@@ -57,14 +57,14 @@
       text-transform: uppercase;
     }
 
-    /* ---------- main area ---------- */
+    /* this is your main area :))) */
     main {
       max-width: 760px;
       margin: 0 auto;
       padding: 2.5rem 1.2rem 4rem;
     }
 
-    /* add card */
+    /* come onnn you need to add card */
     .add-card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -181,7 +181,7 @@
       color: var(--soft);
     }
 
-    /* ---------- grid ---------- */
+    /* grid */
     #memories-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
@@ -243,7 +243,7 @@
       font-style: italic;
     }
 
-    /* delete button */
+    /* don' click this */
     .btn-delete {
       position: absolute;
       top: 7px;
@@ -268,7 +268,7 @@
     .memory-card:hover .btn-delete { opacity: 1; }
     .btn-delete:hover { color: hsl(6, 78%, 42%); background: hsl(0, 0%, 100%); }
 
-    /* empty state */
+    /* empty state; just like a void */
     .empty-state {
       text-align: center;
       padding: 3.5rem 1rem;
@@ -278,7 +278,7 @@
       font-size: 0.95rem;
     }
 
-    /* ---------- footer ---------- */
+    /* footer  */
     footer {
       text-align: center;
       font-size: 0.72rem;
@@ -299,7 +299,7 @@
 </header>
 
 <main>
-  <!-- add memory form -->
+  <!-- PLSSS bro add a memory-->
   <div class="add-card">
     <h2>Add a memory</h2>
     <div class="form-row">
@@ -311,7 +311,7 @@
           📷 Upload photo.....
         </label>
         <input type="file" id="file-input" accept="image/*"/>
-        <span id="file-name">No photo selected</span>
+        <span id="file-name">No photo selected:((((</span>
       </div>
 
       <img id="preview-img" alt="preview of selected photo"/>
@@ -319,7 +319,7 @@
     </div>
   </div>
 
-  <!-- memories list -->
+  <!-- your memories list -->
   <div class="memories-header">
     <h2>My memories</h2>
     <span class="count-badge" id="count-label">0 memories</span>
@@ -330,7 +330,7 @@
   </div>
 </main>
 
-<footer>made with love · Your personal space absolute privacy</footer>
+<footer>made with love · Your personal space absolute privacy:)))</footer>
 
 <script>
   // grab memories from localStorage, or start fresh
@@ -347,7 +347,7 @@
   const grid = document.getElementById('memories-grid');
   const countLabel = document.getElementById('count-label');
 
-  // ---- photo upload handling ----
+  // ---- you need a photo to upload handling ----
   fileInput.addEventListener('change', function() {
     const file = this.files[0];
     if (!file) return;
@@ -363,12 +363,12 @@
     reader.readAsDataURL(file);
   });
 
-  // ---- save a memory ----
+  // ---- plss save a memory...----
   function addMemory() {
     const title = titleInput.value.trim();
     const text = textInput.value.trim();
 
-    // nothing to save? nudge the user
+    // nothing to save? nudge the user//
     if (!title && !text && !currentPhotoData) {
       alert('come on, add at least a title, text, or photo!');
       return;
@@ -390,11 +390,11 @@
       date: dateStr
     });
 
-    // persist & re-render
+    // persist and re-render
     localStorage.setItem('memories', JSON.stringify(memories));
     renderMemories();
 
-    // reset form
+    // reset form //
     titleInput.value = '';
     textInput.value = '';
     fileInput.value = '';
