@@ -14,5 +14,7 @@ it will look like this and you must do these things first
 3. upload a photo
    after all this it will work and you can see your first nostalgia moment:))))
 
+   Also you can see mine Minecraft days and sunset memory of it from here... 
+
 
 
